@@ -1,0 +1,12 @@
+{
+  "name": "ui-base-platform",
+  "version": "1.0.0",
+  "description": "Vanilla JS Microkernel UI Platform",
+  "main": "src/bootstrap.js",
+  "scripts": {
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,429 @@
+:root {
+    /* --color-primary: #3b82f6;
+    --color-primary-800: #2563eb;
+    --color-danger: #ef4444;
+    --color-success: #22c55e;
+    --color-background: #f8fafc;
+    --color-surface-3: #ffffff;
+    --color-text-primary: #1e293b;
+    --color-text-tertiary: #64748b;
+    --color-border: #e2e8f0;
+    --color-border-subtle: #f1f5f9; */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --radius: 8px;
+    --transition: all 0.2s ease;
+}
+
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    padding: 2rem;
+    min-height: 100vh;
+} */
+
+/* --- Container --- */
+.et-container {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    /* Internal scrolling if needed */
+}
+
+/* --- Toolbar --- */
+.et-toolbar {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.et-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.et-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.et-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.et-btn:hover {
+    background-color: var(--color-border-subtle);
+    /* border-color: #cbd5e1; */
+    border-color: var(--color-text-primary);
+}
+
+.et-btn.primary {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-border);
+}
+
+.et-btn.primary:hover {
+    background-color: var(--color-primary-800);
+}
+
+.et-search {
+    position: relative;
+}
+
+.et-search input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    outline: none;
+    font-size: 0.875rem;
+    width: 250px;
+    transition: var(--transition);
+}
+
+.et-search input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* --- Table Wrapper (Scrolling) --- */
+.et-table-wrapper {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 600px;
+}
+
+thead {
+    background-color: var(--color-background);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+th {
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    border-bottom: 1px solid var(--color-border);
+    user-select: none;
+    cursor: default;
+    white-space: nowrap;
+}
+
+th.sortable {
+    cursor: pointer;
+}
+
+th.sortable:hover {
+    background-color: var(--color-border-subtle);
+    color: var(--color-text-primary);
+}
+
+th.sortable .sort-icon {
+    display: inline-block;
+    margin-left: 4px;
+    opacity: 0.3;
+    transition: var(--transition);
+}
+
+th.sortable.active .sort-icon {
+    opacity: 1;
+    color: var(--color-primary);
+}
+
+td {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    vertical-align: middle;
+}
+
+tr:hover td {
+    background-color: var(--color-border-subtle);
+}
+
+tr.selected td {
+    background-color: var(--color-focus);
+}
+
+/* --- Badges for Cell Rendering --- */
+.et-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.et-badge[badge-status="Active"] {
+    background: var(--color-success);
+}
+
+.et-badge[badge-status="Inactive"] {
+    background: var(--color-warning);
+}
+
+.et-badge[badge-status="Pending"] {
+    background: var(--color-danger);
+}
+
+/* --- Checkbox --- */
+.et-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+/* --- Three Dots Menu --- */
+.et-action-cell {
+    position: relative;
+    text-align: right;
+    width: 50px;
+}
+
+.et-kebab-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: var(--color-text-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.et-kebab-btn:hover,
+.et-kebab-btn.active {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.et-dropdown-menu {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    border-radius: 6px;
+    width: 150px;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 0.1s ease-out;
+}
+
+.et-dropdown-menu.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.et-dropdown-item {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.et-dropdown-item:hover {
+    background-color: var(--color-border-subtle);
+}
+
+.et-dropdown-item.danger {
+    color: var(--color-danger-600);
+}
+
+.et-dropdown-item.danger:hover {
+    background-color: var(--color-danger);
+    color: var(--color-text-primary);
+}
+
+/* --- Footer --- */
+.et-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary);
+}
+
+.et-pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.et-page-info {
+    margin: 0 0.5rem;
+}
+
+/* --- Toast Notification --- */
+.et-toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.et-toast {
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-primary);
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* --- Empty State --- */
+.et-empty-state {
+    padding: 3rem;
+    text-align: center;
+    color: var(--color-text-tertiary);
+}
+
+/* --- Modal Overlay --- */
+.et-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.et-modal-overlay.open {
+    display: flex;
+}
+
+.et-modal {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    width: 400px;
+    box-shadow: var(--shadow-md);
+    animation: scaleUp 0.2s ease;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.et-modal h3 {
+    margin-bottom: 1rem;
+}
+
+.et-modal-field {
+    margin-bottom: 1rem;
+}
+
+.et-modal-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.et-modal-field input,
+.et-modal-field select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+}
+
+.et-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}

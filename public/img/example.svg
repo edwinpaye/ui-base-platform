@@ -1,0 +1,192 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Deep cinematic background -->
+    <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#111a2b"/>
+      <stop offset="60%" stop-color="#0a0f1a"/>
+      <stop offset="100%" stop-color="#05070d"/>
+    </radialGradient>
+
+    <!-- Energy glow -->
+    <radialGradient id="coreGlow">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="60%" stop-color="#007bff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+    <!-- Elegant metallic ring -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8ec5ff"/>
+      <stop offset="100%" stop-color="#1c3f94"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Light sweep -->
+    <linearGradient id="lightSweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="50%" stop-color="white" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- Background -->
+  <!-- <rect width="100%" height="100%" fill="url(#bg)" /> -->
+
+  <!-- Subtle Star Particles -->
+  <g fill="white" opacity="0.6">
+    <circle cx="50" cy="80" r="1">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="370" cy="120" r="1.2">
+      <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="350" r="1">
+      <animate attributeName="opacity" values="0;1;0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="300" r="1.3">
+      <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Cinematic vertical light beam -->
+  <rect x="240" y="0" width="20" height="500" fill="url(#coreGlow)" opacity="0">
+    <animate attributeName="opacity"
+             values="0;0.6;0"
+             dur="3s"
+             repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Expanding shockwave -->
+  <circle cx="250" cy="230" r="30"
+          stroke="#00eaff"
+          stroke-width="3"
+          fill="none"
+          opacity="0.6">
+    <animate attributeName="r"
+             values="30;200"
+             dur="3s"
+             repeatCount="indefinite"/>
+    <animate attributeName="opacity"
+             values="0.6;0"
+             dur="3s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Elegant rotating outer ring -->
+  <circle cx="250" cy="230" r="150"
+          stroke="url(#ringGrad)"
+          stroke-width="4"
+          fill="none"
+          stroke-dasharray="40 15"
+          filter="url(#glow)">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0 250 230"
+      to="360 250 230"
+      dur="14s"
+      repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Inner energy core -->
+  <circle cx="250" cy="230" r="45"
+          fill="url(#coreGlow)"
+          filter="url(#glow)">
+    <animate attributeName="r"
+             values="40;55;40"
+             dur="2.5s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Elegant monogram / system symbol -->
+  <text x="250" y="245"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="36"
+        fill="white"
+        text-anchor="middle"
+        letter-spacing="4"
+        opacity="0.3">
+    LOADING...
+    <animate attributeName="opacity"
+             from="0.3"
+             to="1"
+             dur="3s"
+             fill="freeze"
+	     repeatCount="indefinite"/>
+  </text>
+
+  <!-- Dramatic horizontal sweep over title -->
+  <rect x="-300" y="360" width="300" height="40"
+        fill="url(#lightSweep)"
+        transform="skewX(-25)">
+    <animate attributeName="x"
+             from="-300"
+             to="800"
+             dur="3s"
+             repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Cinematic enterprise title -->
+  <text x="250" y="385"
+        font-family="Segoe UI, Arial, sans-serif"
+        font-size="22"
+        fill="#8ec5ff"
+        text-anchor="middle"
+        letter-spacing="8"
+        opacity="0">
+    ENTERPRISE PLATFORM
+    <animate attributeName="opacity"
+             from="0"
+             to="1"
+             dur="3s"
+             begin="1.7s"
+             fill="freeze"/>
+  </text>
+
+  <!-- Subtle loading indicator dots -->
+  <g fill="#00eaff">
+    <circle cx="230" cy="420" r="4">
+      <animate attributeName="opacity"
+               values="0.2;1;0.2"
+               dur="1.2s"
+               repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="420" r="4">
+      <animate attributeName="opacity"
+               values="0.2;1;0.2"
+               dur="1.2s"
+               begin="0.3s"
+               repeatCount="indefinite"/>
+    </circle>
+    <circle cx="270" cy="420" r="4">
+      <animate attributeName="opacity"
+               values="0.2;1;0.2"
+               dur="1.2s"
+               begin="0.6s"
+               repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+</svg>
+
+    <!-- Light Sweep Over Shield -->
+    <!-- <rect x="80" y="80" width="160" height="160"
+          fill="url(#sweepGrad)"
+          opacity="0.4"
+          transform="rotate(25 160 160)">
+      <animate attributeName="x"
+               from="-200"
+               to="400"
+               dur="3s"
+               repeatCount="indefinite"/>
+    </rect> -->

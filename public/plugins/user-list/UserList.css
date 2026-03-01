@@ -1,0 +1,39 @@
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.user-card {
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+    border-color: var(--primary-color);
+}
+
+h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.email {
+    color: var(--primary-color);
+}
+
+.error {
+    color: var(--danger-color);
+    padding: 1rem;
+    border: 1px solid var(--danger-color);
+    border-radius: var(--border-radius);
+    background: rgba(239, 68, 68, 0.1);
+}

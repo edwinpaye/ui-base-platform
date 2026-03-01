@@ -1,0 +1,10 @@
+{
+    "getUsers": {
+        "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "GET"
+    },
+    "getUserDetails": {
+        "url": "https://jsonplaceholder.typicode.com/users/:id",
+        "method": "GET"
+    }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla UI Platform</title>
+    <!-- Modern Fonts & Reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./public/css/index.css">
+</head>
+
+<body>
+    <!-- The Root App Mount Point -->
+    <div id="app-root">
+        <!-- <div id="initializer">
+            <img src="example.svg" alt="description" draggable="false">
+        </div> -->
+        <!-- Global Initial Loading State -->
+        <global-loader></global-loader>
+        <div id="dynamic-content"></div>
+    </div>
+
+    <!-- Bootstrap the Microkernel -->
+    <script type="module" src="./src/bootstrap.js"></script>
+</body>
+
+</html>
