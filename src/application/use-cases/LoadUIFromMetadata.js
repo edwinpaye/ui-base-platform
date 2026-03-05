@@ -17,7 +17,7 @@ export class LoadUIFromMetadata {
      * @param {HTMLElement} rootContainer The HTML node to mount components into.
      */
     async execute(uiConfig, rootContainer) {
-        rootContainer.innerHTML = ''; // Clear previous content
+        // rootContainer.innerHTML = ''; // Clear previous content
 
         const fragment = document.createDocumentFragment();
 
@@ -41,7 +41,12 @@ export class LoadUIFromMetadata {
             fragment.appendChild(element);
         }
 
+        // const data = await new Promise(resolve =>
+        //     setTimeout(() => resolve(['Apple', 'Banana', 'Cherry']), 1000)
+        // );
+
         // 4. Attach all instantiated components to the DOM
-        rootContainer.appendChild(fragment);
+        // rootContainer.appendChild(fragment);
+        rootContainer.replaceChildren(fragment);
     }
 }

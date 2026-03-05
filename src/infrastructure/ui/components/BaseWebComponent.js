@@ -11,6 +11,49 @@ export class BaseWebComponent extends HTMLElement {
         this.unsubscribeCallbacks = [];
     }
 
+    async loadNestedComponents(uiConfig) {
+        const fragment = document.createDocumentFragment();
+
+        if (!window.App || !window.App.componentLoader) {
+            console.error('Component loader not initialized');
+            return;
+        }
+
+        const loadPromise = uiConfig.map(config => {
+            window.App.componentLoader.load(config);
+        });
+
+        // const data = await new Promise(resolve =>
+        //     setTimeout(() => resolve(['Apple', 'Banana', 'Cherry']), 3000)
+        // );
+
+        await Promise.all(loadPromise).then(() => {
+            for (const config of uiConfig) {
+                // 1. Tell the infrastructure to lazy load the script for this Web Component
+                // await this.componentLoader.load(config);
+                // window.App.componentLoader.load(config);
+
+                // 2. Instantiate the element based on the `component` tag name from config
+                const element = document.createElement(config.component);
+
+                // 3. Optional: apply metadata properties/attributes to the Custom Element
+                if (config.id) element.id = config.id;
+                if (config.props) {
+                    for (const [key, value] of Object.entries(config.props)) {
+                        // For Web Components, properties are often better set directly on the DOM node instead of attributes
+                        // if they are complex objects, but for simplicity here we do both or assume strings.
+                        element.setAttribute(key, typeof value === 'object' ? JSON.stringify(value) : value);
+                    }
+                }
+
+                // this.shadowRoot.getElementById('loading-card').replaceChildren(element);
+                fragment.appendChild(element);
+            }
+        });
+
+        return fragment;
+    }
+
     connectedCallback() {
         this.render();
         this.onMount();

@@ -46,8 +46,10 @@ export class GlobalLoader extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 .loader-overlay {
-                    position: fixed;
-                    top: 0; left: 0; width: 100vw; height: 100vh;
+                    // position: fixed;
+                    // top: 0; left: 0;
+                    width: 100%;
+                    height: 100%;
                     background: rgba(15, 23, 42, 0.8);
                     backdrop-filter: blur(8px);
                     -webkit-backdrop-filter: blur(8px);
@@ -56,7 +58,7 @@ export class GlobalLoader extends HTMLElement {
                     align-items: center;
                     justify-content: center;
                     z-index: 9999;
-                    opacity: 0;
+                    // opacity: 0;
                     pointer-events: none;
                     transition: opacity 0.3s ease-in-out;
                 }

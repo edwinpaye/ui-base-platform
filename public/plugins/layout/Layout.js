@@ -202,6 +202,10 @@ export default class EnterpriseLayout extends BaseWebComponent {
 
     // --- Tab Management ---
 
+    get uiLoader() {
+        return window.App?.loadUIUseCase;
+    }
+
     /**
      * Opens a tab.
      * @param {Object} item - The menu item metadata
@@ -221,19 +225,22 @@ export default class EnterpriseLayout extends BaseWebComponent {
         // Example: 'customers' -> 'customers_1698123'
         const uniqueId = item.id + '_' + Date.now() + Math.floor(Math.random() * 1000);
         const isClone = forceNew || this.openTabs.some(t => t.baseId === item.id);
+        const hasContent = item.content != null;
 
         const tabObj = {
             id: uniqueId,
             baseId: item.id,
             title: item.title + (isClone ? ` (${this.openTabs.filter(t => t.baseId === item.id).length + 1})` : ''),
-            content: this.generatePageContent(item, isClone),
+            // content: this.generatePageContent(item, isClone),
+            // content: item.content ? this.uiLoader.execute(item.content, this.pageViewport) : this.generatePageContent(item, isClone),
+            content: hasContent ? '<global-loader></global-loader>' : this.generatePageContent(item, isClone),
             isClone: isClone,
             timestamp: Date.now()
         };
 
         this.openTabs.push(tabObj);
         this.renderTab(tabObj);
-        this.renderPage(tabObj);
+        const pageContainer = this.renderPage(tabObj);
         this.activateTab(uniqueId);
         this.updateScrollButtons();
 
@@ -242,6 +249,8 @@ export default class EnterpriseLayout extends BaseWebComponent {
             const tabEl = this.shadowRoot.querySelector(`.tab[data-id="${uniqueId}"]`);
             if (tabEl) tabEl.scrollIntoView({ behavior: 'smooth', inline: 'center' });
         }, 10);
+
+        hasContent && this.loadNestedComponents(item.content).then((content) => this.shadowRoot.getElementById(pageContainer).replaceChildren(content));
     }
 
     activateTab(tabId) {
@@ -316,6 +325,8 @@ export default class EnterpriseLayout extends BaseWebComponent {
         el.id = `page-${tabObj.id}`;
         el.innerHTML = tabObj.content;
         this.pageViewport.appendChild(el);
+
+        return el.id;
     }
 
     // --- Content Generation (Simulation) ---

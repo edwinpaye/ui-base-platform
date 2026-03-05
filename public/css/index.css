@@ -350,6 +350,7 @@ body {
     /* object-fit: contain; */
     width: min(1200px, 100%);
     margin: 0 auto;
+    height: 100vh;
 }
 
 /* Glassmorphism utility */

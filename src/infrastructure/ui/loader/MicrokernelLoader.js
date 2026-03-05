@@ -1,5 +1,5 @@
 // src/infrastructure/ui/loader/MicrokernelLoader.js
-import { IComponentLoader } from '../../application/ports/IComponentLoader.js';
+import { IComponentLoader } from '../../../application/ports/IComponentLoader.js';
 
 /**
  * MicrokernelLoader is responsible for dynamically fetching JavaScript modules

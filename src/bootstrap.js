@@ -8,6 +8,14 @@ import { LoadUIFromMetadata } from './application/use-cases/LoadUIFromMetadata.j
 import './infrastructure/ui/components/GlobalLoader.js';
 
 async function bootstrap() {
+    const isDarkMode = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?? false;
+    setupDarkTheme(isDarkMode);
+
+    const container = document.getElementById('dynamic-content');
+
+    const loadingComponent = document.createElement('global-loader');
+    container.appendChild(loadingComponent);
+
     console.log("🚀 Bootstrapping Vanilla Microkernel Platform");
 
     // 1. Initialize Infrastructure (Adapters)
@@ -22,7 +30,8 @@ async function bootstrap() {
     window.App = {
         store,
         httpClient,
-        componentLoader
+        componentLoader,
+        loadUIUseCase
     };
 
     // 3. Kickoff the application by loading initial metadata
@@ -33,11 +42,8 @@ async function bootstrap() {
         const uiConfig = await response.json();
 
         // 4. Orchestrate component rendering via Use Case
-        const container = document.getElementById('dynamic-content');
+        // const container = document.getElementById('dynamic-content');
         await loadUIUseCase.execute(uiConfig, container);
-
-        const isDarkMode = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches ?? false;
-        setupDarkTheme(isDarkMode);
 
         console.log("✅ Platform booted successfully");
     } catch (error) {
